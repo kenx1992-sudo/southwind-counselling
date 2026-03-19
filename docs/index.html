@@ -3,41 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>南風心理輔導室 Southwind Counselling | 專業線上心理輔導平台</title>
+    <title>南風AI心理輔導 | 24/7智能陪伴</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2D5A4A;
             --primary-light: #4A7C6F;
-            --secondary: #F5F0E8;
+            --secondary: #F8F6F3;
             --accent: #E8B86D;
-            --text: #2C3E50;
-            --text-light: #5D6D7E;
+            --ai-blue: #3B82F6;
+            --ai-purple: #8B5CF6;
+            --text: #1F2937;
+            --text-light: #6B7280;
             --white: #FFFFFF;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --gradient-hero: linear-gradient(135deg, #2D5A4A 0%, #1E3A2F 50%, #0F1F1A 100%);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.6;
             background: var(--secondary);
         }
         
         /* Header */
         header {
-            background: var(--white);
-            box-shadow: var(--shadow);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
         nav {
@@ -53,233 +52,252 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
         }
         
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--ai-blue));
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--text);
             font-weight: 500;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
         
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+        .nav-links a:hover { color: var(--primary); }
         
-        .cta-btn {
-            background: var(--primary);
+        .nav-links .highlight {
+            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
         }
         
-        .cta-btn:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
+        /* AI Hero Section */
+        .ai-hero {
+            background: var(--gradient-hero);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Hero Section */
-        .hero {
-            padding: 10rem 2rem 6rem;
+        .ai-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .ai-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            color: white;
             line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
         
         .hero-content h1 span {
-            color: var(--primary);
+            background: linear-gradient(90deg, #60A5FA, #A78BFA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-        
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        
-        .hero-image {
-            position: relative;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-        
-        /* Core Services (壹点灵風格) */
-        .core-services {
-            padding: 5rem 2rem;
-            background: linear-gradient(180deg, var(--white) 0%, var(--secondary) 100%);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            text-decoration: none;
-            color: var(--text);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid transparent;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-            border-color: rgba(45, 90, 74, 0.1);
-        }
-        
-        .service-card.featured {
-            background: linear-gradient(135deg, rgba(45,90,74,0.05), rgba(74,124,111,0.05));
-            border: 2px solid var(--primary);
-        }
-        
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-            color: white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        
-        .service-card h3 {
             font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--text);
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            max-width: 500px;
         }
         
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 1rem;
+        .ai-chat-preview {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         
-        .service-tag {
-            display: inline-block;
-            padding: 0.35rem 0.75rem;
-            background: rgba(45, 90, 74, 0.1);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
-        .service-tag.hot {
-            background: linear-gradient(135deg, #EF4444, #DC2626);
-            color: white;
-        }
-        
-        .service-arrow {
-            position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            width: 36px;
-            height: 36px;
+        .ai-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
             border-radius: 50%;
-            background: var(--secondary);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-            opacity: 0;
-            transform: translateX(-10px);
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10B981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.25rem;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .message.ai {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 0.875rem 1.25rem;
+            color: white;
+            font-size: 0.95rem;
+        }
+        
+        .chat-input input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .chat-input button {
+            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .chat-input button:hover {
+            transform: scale(1.05);
+        }
+        
+        .start-chat-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
             transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(139,92,246,0.3);
         }
         
-        .service-card:hover .service-arrow {
-            opacity: 1;
-            transform: translateX(0);
+        .start-chat-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139,92,246,0.4);
         }
         
-        @media (max-width: 968px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 568px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Features Section */
-        .features {
-            background: var(--white);
-            padding: 5rem 2rem;
+        /* AI Features */
+        .ai-features {
+            padding: 6rem 2rem;
+            background: white;
         }
         
         .container {
@@ -289,18 +307,18 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--text);
         }
         
         .section-title p {
             color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.1rem;
         }
         
         .features-grid {
@@ -310,32 +328,32 @@
         }
         
         .feature-card {
-            padding: 2rem;
-            background: var(--secondary);
-            border-radius: 16px;
             text-align: center;
-            transition: transform 0.3s;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            background: var(--secondary);
+            transition: all 0.3s;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
         
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
         }
         
         .feature-card h3 {
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
         }
         
         .feature-card p {
@@ -343,685 +361,283 @@
             font-size: 0.95rem;
         }
         
-        /* How It Works */
-        .how-it-works {
-            padding: 5rem 2rem;
-        }
-        
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .step {
-            text-align: center;
-            position: relative;
-        }
-        
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-        
-        .step h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .step p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        /* Counselors Section */
-        .counselors {
-            background: var(--white);
-            padding: 5rem 2rem;
-        }
-        
-        .counselors-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .counselor-card {
-            background: var(--secondary);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        
-        .counselor-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .counselor-img {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        
-        .counselor-info {
-            padding: 1.5rem;
-        }
-        
-        .counselor-info h3 {
-            margin-bottom: 0.3rem;
-        }
-        
-        .counselor-title {
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .counselor-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .tag {
-            background: var(--white);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-        
-        /* Booking Section */
-        .booking {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-        }
-        
-        .booking .section-title h2,
-        .booking .section-title p {
-            color: white;
-        }
-        
-        .booking-form {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            color: var(--text);
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #E5E7EB;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background: var(--primary-light);
-        }
-        
         /* Pricing */
         .pricing {
-            padding: 5rem 2rem;
-            background: var(--secondary);
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--secondary) 0%, white 100%);
         }
         
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         .pricing-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            position: relative;
         }
         
-        .pricing-card.featured {
-            border: 3px solid var(--primary);
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
             transform: scale(1.05);
         }
         
+        .pricing-card.popular::before {
+            content: '最受歡迎';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
         .pricing-card h3 {
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
         
         .price {
             font-size: 3rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin: 1.5rem 0;
         }
         
         .price span {
             font-size: 1rem;
             color: var(--text-light);
+            font-weight: 400;
         }
         
         .pricing-features {
             list-style: none;
+            text-align: left;
             margin: 2rem 0;
         }
         
         .pricing-features li {
             padding: 0.75rem 0;
-            border-bottom: 1px solid #E5E7EB;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
         
-        .pricing-features li:last-child {
-            border-bottom: none;
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .pricing-btn {
+            display: block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .pricing-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        .pricing-card.popular .pricing-btn {
+            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+        }
+        
+        /* Secondary Links */
+        .secondary-links {
+            padding: 4rem 2rem;
+            background: white;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .link-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--secondary);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        
+        .link-card:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .link-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .link-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .link-card p {
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
         
         /* Footer */
         footer {
             background: var(--text);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-        
-        .footer-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-        }
-        
-        .footer-brand .logo {
-            color: white;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-brand p {
-            color: #9CA3AF;
-            margin-bottom: 1.5rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-        }
-        
-        .footer-links h4 {
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-links a {
-            color: #9CA3AF;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 2rem;
             text-align: center;
-            color: #9CA3AF;
         }
         
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero {
+        footer p {
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
                 grid-template-columns: 1fr;
-                padding-top: 8rem;
+                gap: 3rem;
             }
             
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .features-grid,
-            .counselors-grid,
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
             
-            .steps {
-                grid-template-columns: 1fr;
+            .pricing-card.popular {
+                transform: none;
             }
             
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .nav-links {
                 display: none;
             }
         }
-        
-        /* Language Toggle */
-        .lang-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo">
-                <div class="logo-icon">南</div>
-                <span>南風心理輔導室</span>
+                <div class="logo-icon">🌿</div>
+                <span>南風AI心理輔導</span>
             </div>
             <ul class="nav-links">
+                <li><a href="#features">AI功能</a></li>
+                <li><a href="#pricing">月費方案</a></li>
                 <li><a href="assessments/index.html">心理測評</a></li>
-                <li><a href="community/index.html">心事傾訴</a></li>
-                <li><a href="content/index.html">資源中心</a></li>
-                <li><a href="#counselors">輔導員</a></li>
-                <li><a href="counselor-join/index.html">加入我們</a></li>
+                <li><a href="counselor-join/index.html">真人諮詢</a></li>
+                <li><a href="#chat" class="highlight">開始對話</a></li>
             </ul>
-            <a href="#booking" class="cta-btn">立即預約</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>你並不孤單。<br><span>南風</span>與你同行。</h1>
-            <p class="hero-subtitle">
-                香港專業線上心理輔導平台。無論何時何地，專業輔導員都在這裡傾聽你的心聲。
-                保密、專業、可負擔的心理健康服務。
-            </p>
-            <a href="#booking" class="cta-btn">免費初步諮詢</a>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">專業輔導員</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">10,000+</div>
-                    <div class="stat-label">服務個案</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">4.9</div>
-                    <div class="stat-label">用戶評分</div>
-                </div>
+    <!-- AI Hero -->
+    <section class="ai-hero" id="chat">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>你的<span>AI心理輔導員</span><br>24/7 隨時陪伴</h1>
+                <p class="hero-subtitle">
+                    無需預約，即刻傾訴。專業 AI 技術結合心理學理論，
+                    隨時隨地為你提供情緒支持和心理建議。
+                </p>
+                <a href="https://t.me/Szechunbot" class="start-chat-btn">
+                    💬 開始 AI 對話
+                </a>
             </div>
-        </div>
-        <div class="hero-image">
-            <svg viewBox="0 0 400 400" style="width:100%; border-radius:20px;">
-                <defs>
-                    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#4A7C6F"/>
-                        <stop offset="100%" style="stop-color:#2D5A4A"/>
-                    </linearGradient>
-                </defs>
-                <rect width="400" height="400" fill="url(#bg)" rx="20"/>
-                <circle cx="200" cy="150" r="60" fill="#F5F0E8" opacity="0.9"/>
-                <ellipse cx="200" cy="280" rx="100" ry="80" fill="#F5F0E8" opacity="0.9"/>
-                <circle cx="180" cy="140" r="5" fill="#2D5A4A"/>
-                <circle cx="220" cy="140" r="5" fill="#2D5A4A"/>
-                <path d="M 185 165 Q 200 175 215 165" stroke="#2D5A4A" stroke-width="3" fill="none"/>
-                <text x="200" y="360" text-anchor="middle" fill="white" font-size="16" font-family="Noto Sans TC">Southwind Counselling</text>
-            </svg>
-        </div>
-    </section>
-
-    <!-- 核心功能入口 (壹点灵風格) -->
-    <section class="core-services">
-        <div class="container">
-            <div class="section-title">
-                <h2>探索我們的服務</h2>
-                <p>從自我探索到專業支援，我們陪伴你每一步</p>
-            </div>
-            <div class="services-grid">
-                <a href="assessments/index.html" class="service-card">
-                    <div class="service-icon" style="background: linear-gradient(135deg, #3B82F6, #1D4ED8);">📊</div>
-                    <h3>心理測評</h3>
-                    <p>免費專業量表，了解你的情緒狀態</p>
-                    <span class="service-tag">免費</span>
-                    <div class="service-arrow">→</div>
-                </a>
-                <a href="community/index.html" class="service-card">
-                    <div class="service-icon" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">💬</div>
-                    <h3>心事傾訴</h3>
-                    <p>匿名分享心事，專家為你解答</p>
-                    <span class="service-tag">匿名</span>
-                    <div class="service-arrow">→</div>
-                </a>
-                <a href="content/index.html" class="service-card">
-                    <div class="service-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">📚</div>
-                    <h3>資源中心</h3>
-                    <p>精選文章音頻，陪你成長</p>
-                    <span class="service-tag">精選</span>
-                    <div class="service-arrow">→</div>
-                </a>
-                <a href="#booking" class="service-card featured">
-                    <div class="service-icon" style="background: linear-gradient(135deg, #2D5A4A, #4A7C6F);">👨‍⚕️</div>
-                    <h3>預約輔導</h3>
-                    <p>一對一專業輔導，首節免費</p>
-                    <span class="service-tag hot">首節免費</span>
-                    <div class="service-arrow">→</div>
-                </a>
+            
+            <div class="ai-chat-preview">
+                <div class="chat-header">
+                    <div class="ai-avatar">🤖</div>
+                    <div>
+                        <div style="color: white; font-weight: 600;">南風AI輔導員</div>
+                        <div class="ai-status">
+                            <span class="status-dot"></span>
+                            在線中
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-messages">
+                    <div class="message ai">
+                        你好，我是南風AI輔導員。今天感覺怎麼樣？無論是情緒困擾、壓力管理，還是只是想聊聊，我都在這裡陪伴你。
+                    </div>
+                    <div class="message user">
+                        最近工作壓力很大，常常失眠...
+                    </div>
+                    <div class="message ai">
+                        聽起來你最近過得很辛苦。工作壓力和失眠往往互相影響。想先跟我聊聊是什麼讓你感到壓力嗎？或者我們可以先做一些放鬆練習？
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="輸入你的消息...">
+                    <button>發送</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features" id="services">
+    <!-- AI Features -->
+    <section class="ai-features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>為何選擇南風？</h2>
-                <p>我們致力打破心理健康服務的種種障礙，讓專業輔導變得觸手可及</p>
+                <h2>🧠 AI 智能輔導</h2>
+                <p>結合最新 AI 技術與專業心理學，為你提供個人化支持</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>隨時隨地</h3>
-                    <p>無需舟車勞頓，手機或電腦即可進行視像輔導。早上、深夜，隨你選擇。</p>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #3B82F6, #1D4ED8);">⚡</div>
+                    <h3>即時回應</h3>
+                    <p>無需等待，隨時隨地獲得情緒支持和建議，就像有個朋友隨時在身邊</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>絕對保密</h3>
-                    <p>所有對話經端對端加密，符合香港私隱條例。你的秘密，只屬於你。</p>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">🎯</div>
+                    <h3>智能評估</h3>
+                    <p>AI 自動識別情緒狀態，推薦適合的練習和資源，追蹤你的進步</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>價格透明</h3>
-                    <p>明碼實價，無隱藏收費。首次諮詢免費，後續每次低至$300起。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>專業認證</h3>
-                    <p>所有輔導員均持有香港專業資格，包括臨床心理學家、輔導心理學家等。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>配對精準</h3>
-                    <p>AI智能配對系統，根據你的需要和偏好，找到最適合你的輔導員。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
-                    <h3>緊急支援</h3>
-                    <p>24小時危機熱線。當你需要立即傾訴，我們隨時在線。</p>
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #10B981, #059669);">🔒</div>
+                    <h3>絕對私密</h3>
+                    <p>所有對話端對端加密，不會被記錄或分享，讓你安心傾訴</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>簡單四步，開始你的療癒之旅</h2>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>填寫問卷</h3>
-                    <p>簡單幾條問題，讓我們了解你的需要和偏好</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>智能配對</h3>
-                    <p>系統根據專業領域、語言、性別偏好為你配對</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>選擇時段</h3>
-                    <p>瀏覽輔導員的行事曆，選擇最適合你的時間</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>開始輔導</h3>
-                    <p>透過視像或語音，在安全的空間開始對話</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Counselors -->
-    <section class="counselors" id="counselors">
-        <div class="container">
-            <div class="section-title">
-                <h2>我們的專業團隊</h2>
-                <p>每一位輔導員都經過嚴格篩選，具備豐富臨床經驗</p>
-            </div>
-            <div class="counselors-grid">
-                <div class="counselor-card">
-                    <div class="counselor-img">👩‍⚕️</div>
-                    <div class="counselor-info">
-                        <h3>陳雅婷博士</h3>
-                        <div class="counselor-title">臨床心理學家</div>
-                        <p>香港大學心理學博士，15年臨床經驗</p>
-                        <div class="counselor-tags">
-                            <span class="tag">抑鬱症</span>
-                            <span class="tag">焦慮症</span>
-                            <span class="tag">創傷</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="counselor-card">
-                    <div class="counselor-img">👨‍⚕️</div>
-                    <div class="counselor-info">
-                        <h3>李志偉先生</h3>
-                        <div class="counselor-title">輔導心理學家</div>
-                        <p>專注於家庭關係及青少年心理</p>
-                        <div class="counselor-tags">
-                            <span class="tag">家庭治療</span>
-                            <span class="tag">青少年</span>
-                            <span class="tag">人際關係</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="counselor-card">
-                    <div class="counselor-img">👩‍⚕️</div>
-                    <div class="counselor-info">
-                        <h3>王美琪女士</h3>
-                        <div class="counselor-title">註冊社工</div>
-                        <p>擅長情緒管理及職場壓力</p>
-                        <div class="counselor-tags">
-                            <span class="tag">職場壓力</span>
-                            <span class="tag">情緒管理</span>
-                            <span class="tag">生涯規劃</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="counselor-card">
-                    <div class="counselor-img">👨‍⚕️</div>
-                    <div class="counselor-info">
-                        <h3>張浩然博士</h3>
-                        <div class="counselor-title">臨床心理學家</div>
-                        <p>專注於認知行為治療及成癮輔導</p>
-                        <div class="counselor-tags">
-                            <span class="tag">成癮輔導</span>
-                            <span class="tag">CBT</span>
-                            <span class="tag">睡眠問題</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section class="booking" id="booking">
-        <div class="container">
-            <div class="section-title">
-                <h2>立即預約你的專屬輔導</h2>
-                <p>邁出第一步，就是改變的開始</p>
-            </div>
-            <form class="booking-form" id="bookingForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="name">姓名 *</label>
-                        <input type="text" id="name" name="name" required placeholder="你的姓名">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">電話號碼 *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="5xxx xxxx">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">電郵地址 *</label>
-                        <input type="email" id="email" name="email" required placeholder="example@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="age">年齡</label>
-                        <input type="number" id="age" name="age" min="18" max="100" placeholder="18">
-                    </div>
-                    <div class="form-group">
-                        <label for="concern">主要困擾 *</label>
-                        <select id="concern" name="concern" required>
-                            <option value="">請選擇</option>
-                            <option value="depression">抑鬱/情緒低落</option>
-                            <option value="anxiety">焦慮/驚恐</option>
-                            <option value="relationship">人際/感情關係</option>
-                            <option value="family">家庭問題</option>
-                            <option value="work">工作/學業壓力</option>
-                            <option value="trauma">創傷經歷</option>
-                            <option value="addiction">成癮問題</option>
-                            <option value="other">其他</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="preference">輔導員偏好</label>
-                        <select id="preference" name="preference">
-                            <option value="">無特別偏好</option>
-                            <option value="female">女性輔導員</option>
-                            <option value="male">男性輔導員</option>
-                            <option value="cantonese">粵語母語</option>
-                            <option value="english">英語</option>
-                            <option value="mandarin">普通話</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="date">首選日期</label>
-                        <input type="date" id="date" name="date">
-                    </div>
-                    <div class="form-group">
-                        <label for="time">首選時段</label>
-                        <select id="time" name="time">
-                            <option value="">請選擇</option>
-                            <option value="morning">上午 (9:00-12:00)</option>
-                            <option value="afternoon">下午 (12:00-18:00)</option>
-                            <option value="evening">晚上 (18:00-22:00)</option>
-                        </select>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="message">想對我們說的話（可選）</label>
-                        <textarea id="message" name="message" placeholder="簡單描述你的情況，讓我們更好地為你準備..."></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn">提交預約申請</button>
-                <p style="text-align:center; margin-top:1rem; color:#6B7280; font-size:0.9rem;">
-                    提交後，我們會在24小時內聯絡你確認詳情。首次諮詢完全免費。
-                </p>
-            </form>
         </div>
     </section>
 
@@ -1029,139 +645,79 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-title">
-                <h2>明碼實價，無隱藏收費</h2>
-                <p>選擇最適合你的方案</p>
+                <h2>選擇適合你的方案</h2>
+                <p>無需綁約，隨時可取消</p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>首次諮詢</h3>
-                    <div class="price">免費<span>/20分鐘</span></div>
+                    <h3>基礎版</h3>
+                    <div class="price">$98<span>/月</span></div>
                     <ul class="pricing-features">
-                        <li>✓ 初步評估</li>
-                        <li>✓ 了解你的需要</li>
-                        <li>✓ 配對建議</li>
-                        <li>✓ 無需信用卡</li>
+                        <li>AI 輔導無限次對話</li>
+                        <li>基礎心理測評</li>
+                        <li>每日情緒追蹤</li>
+                        <li>冥想與放鬆音頻</li>
                     </ul>
-                    <a href="#booking" class="cta-btn">立即預約</a>
+                    <a href="#" class="pricing-btn">選擇基礎版</a>
                 </div>
-                <div class="pricing-card featured">
-                    <h3>單次輔導</h3>
-                    <div class="price">$500<span>/50分鐘</span></div>
+                
+                <div class="pricing-card popular">
+                    <h3>進階版</h3>
+                    <div class="price">$298<span>/月</span></div>
                     <ul class="pricing-features">
-                        <li>✓ 專業輔導員</li>
-                        <li>✓ 50分鐘深度對話</li>
-                        <li>✓ 視像/語音/文字</li>
-                        <li>✓ 24小時內預約</li>
-                        <li>✓ 彈性時間</li>
+                        <li>AI 輔導無限次對話</li>
+                        <li>全部心理測評 + 分析報告</li>
+                        <li>每月 1 次真人視訊諮詢</li>
+                        <li>個人化練習計劃</li>
+                        <li>優先回應</li>
                     </ul>
-                    <a href="#booking" class="cta-btn">選擇此方案</a>
+                    <a href="#" class="pricing-btn">選擇進階版</a>
                 </div>
+                
                 <div class="pricing-card">
-                    <h3>月度計劃</h3>
-                    <div class="price">$1,800<span>/4次</span></div>
+                    <h3>專業版</h3>
+                    <div class="price">$598<span>/月</span></div>
                     <ul class="pricing-features">
-                        <li>✓ 每週一次輔導</li>
-                        <li>✓ 固定輔導員</li>
-                        <li>✓ 優先預約</li>
-                        <li>✓ 免費進度評估</li>
-                        <li>✓ 節省$200</li>
+                        <li>AI 輔導無限次對話</li>
+                        <li>全部測評 + 深度報告</li>
+                        <li>每月 4 次真人諮詢</li>
+                        <li>專屬輔導員配對</li>
+                        <li>24小時危機支援</li>
                     </ul>
-                    <a href="#booking" class="cta-btn">選擇此方案</a>
+                    <a href="#" class="pricing-btn">選擇專業版</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Secondary Links -->
+    <section class="secondary-links">
+        <div class="links-grid">
+            <a href="assessments/index.html" class="link-card">
+                <div class="icon">📊</div>
+                <h4>心理測評</h4>
+                <p>專業量表評估</p>
+            </a>
+            <a href="community/index.html" class="link-card">
+                <div class="icon">💬</div>
+                <h4>心事傾訴</h4>
+                <p>匿名社群分享</p>
+            </a>
+            <a href="content/index.html" class="link-card">
+                <div class="icon">📚</div>
+                <h4>資源中心</h4>
+                <p>文章與音頻</p>
+            </a>
+            <a href="counselor-join/index.html" class="link-card">
+                <div class="icon">👨‍⚕️</div>
+                <h4>真人諮詢</h4>
+                <p>專業輔導員</p>
+            </a>
+        </div>
+    </section>
+
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-icon">南</div>
-                    <span>南風心理輔導室</span>
-                </div>
-                <p>香港領先的線上心理輔導平台。我們相信每個人都值得被傾聽，每顆心都值得被溫柔對待。</p>
-                <div class="social-links">
-                    <a href="#">f</a>
-                    <a href="#">in</a>
-                    <a href="#">ig</a>
-                    <a href="#">wa</a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>服務</h4>
-                <ul>
-                    <li><a href="#">個人輔導</a></li>
-                    <li><a href="#">伴侶輔導</a></li>
-                    <li><a href="#">家庭治療</a></li>
-                    <li><a href="#">危機支援</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>關於</h4>
-                <ul>
-                    <li><a href="#">心理測評</a></li>
-                    <li><a href="#">輔導員團隊</a></li>
-                    <li><a href="#">加入我們</a></li>
-                    <li><a href="#">媒體報導</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>支援</h4>
-                <ul>
-                    <li><a href="#">加入我們</a></li>
-                    <li><a href="#">私隱政策</a></li>
-                    <li><a href="#">服務條款</a></li>
-                    <li><a href="#">聯絡我們</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 南風心理輔導室 Southwind Counselling. 保留所有權利。</p>
-        </div>
+        <p>© 2026 南風AI心理輔導 | 與 @Szechunbot 協作服務</p>
     </footer>
-
-    <!-- Language Toggle -->
-    <div class="lang-toggle" onclick="toggleLang()">English</div>
-
-    <script>
-        // Form submission
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Collect form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Show confirmation
-            alert('感謝你的預約！我們已收到你的申請，將在24小時內致電 ' + data.phone + ' 與你確認詳情。');
-            
-            // In production, this would send to backend
-            console.log('Booking submitted:', data);
-        });
-
-        // Language toggle
-        let isChinese = true;
-        function toggleLang() {
-            isChinese = !isChinese;
-            document.querySelector('.lang-toggle').textContent = isChinese ? 'English' : '中文';
-            // In production, this would switch the entire page content
-        }
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Set minimum date for booking
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').setAttribute('min', today);
-    </script>
 </body>
 </html>
