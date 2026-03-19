@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們 - 南風心理輔導</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #4A7C6F;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --bg: #F8F6F3;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #1E3A2F);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+        
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .story-image {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 16px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: 12px;
+        }
+        
+        .value-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .value-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .value-card p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        .team-preview {
+            text-align: center;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .member-photo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #E5E7EB, #D1D5DB);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .member-role {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary), #1E3A2F);
+            color: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>關於南風</h1>
+        <p>香港本土專業心理輔導團隊，陪伴你走過人生低谷</p>
+    </header>
+    
+    <div class="container">
+        <div class="section story-section">
+            <div class="story-content">
+                <h2>我們的故事</h2>
+                <p>南風心理輔導成立於2024年，由一群來自香港大學、中文大學的臨床心理學家、輔導心理學家及註冊社工共同創立。</p>
+                <p>我們相信，每個人都值得被傾聽，每顆心都值得被溫柔對待。在香港這個快節奏的都市，我們希望為你提供一個安全、私密的空間，讓你可以放下包袱，真實地面對自己。</p>
+                <p>「南風」取名自《詩經》：「南風之薰兮，可以解吾民之慍兮。」我們希望像溫暖的南風一樣，吹散你心中的煩憂。</p>
+            </div>
+            <div class="story-image">🌿</div>
+        </div>
+        
+        <div class="section">
+            <h2>我們的核心價值</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h3>真誠陪伴</h3>
+                    <p>不評判、不說教，用心傾聽你的故事</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🔒</div>
+                    <h3>絕對保密</h3>
+                    <p>你的秘密只屬於你，我們嚴守專業操守</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🎯</div>
+                    <h3>專業有效</h3>
+                    <p>基於實證心理學，提供可落地的建議</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section team-preview">
+            <h2>核心團隊</h2>
+            <p>我們的團隊成員均持有香港專業資格，平均擁有8年以上臨床經驗</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">👩‍⚕️</div>
+                    <div class="member-name">陳雅婷博士</div>
+                    <div class="member-role">臨床心理學家</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">👨‍⚕️</div>
+                    <div class="member-name">李志偉先生</div>
+                    <div class="member-role">輔導心理學家</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">👩‍⚕️</div>
+                    <div class="member-name">王美琪女士</div>
+                    <div class="member-role">註冊社工</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">👨‍⚕️</div>
+                    <div class="member-name">張浩然博士</div>
+                    <div class="member-role">臨床心理學家</div>
+                </div>
+            </div>
+            <p style="margin-top: 2rem;"><a href="counselor-join/index.html" style="color: var(--primary);">查看完整團隊介紹 →</a></p>
+        </div>
+    </div>
+    
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number">500+</div>
+                <div class="stat-label">服務個案</div>
+            </div>
+            <div>
+                <div class="stat-number">8+</div>
+                <div class="stat-label">平均年資</div>
+            </div>
+            <div>
+                <div class="stat-number">4.9</div>
+                <div class="stat-label">用戶評分</div>
+            </div>
+            <div>
+                <div class="stat-number">98%</div>
+                <div class="stat-label">滿意度</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cta-section">
+        <h2>準備好開始了嗎？</h2>
+        <p style="margin-bottom: 1.5rem; color: var(--text-light);">邁出第一步，就是改變的開始</p>
+        <a href="contact.html" class="cta-btn">預約免費諮詢</a>
+    </div>
+    
+    <footer>
+        <p>© 2026 南風心理輔導 | <a href="privacy.html" style="color: var(--text-light);">隱私政策</a> | <a href="index.html" style="color: var(--text-light);">返回首頁</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常見問題 - 南風心理輔導</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #4A7C6F;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --bg: #F8F6F3;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #1E3A2F);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: rgba(45, 90, 74, 0.02);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: var(--text-light);
+        }
+        
+        .category {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>常見問題</h1>
+        <p>找到你想知道的答案</p>
+    </header>
+    
+    <div class="container">
+        <div class="category">關於服務</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">第一次諮詢會是什麼樣的體驗？</div>
+            <div class="faq-answer">
+                <p>第一次諮詢主要是讓你熟悉環境和輔導員。輔導員會了解你的基本情況、困擾和期望，同時你也會了解輔導的流程和保密原則。這是一個雙向了解的過程，沒有壓力，你可以決定是否繼續。</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">諮詢內容會被保密嗎？</div>
+            <div class="faq-answer">
+                <p>絕對保密。所有諮詢內容都受到專業操守和《個人資料（私隱）條例》保護。只有在極少數情況下（如涉及即時生命危險或法律要求），我們才可能需要突破保密限制，但這種情況極少發生。</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">我應該選擇30分鐘還是60分鐘？</div>
+            <div class="faq-answer">
+                <p>30分鐘適合：初步評估、單一議題、時間有限的用戶。60分鐘適合：深入探討、多個議題、希望有更多時間沉澱的用戶。如果你不确定，建議先從30分鐘開始，之後可以延長。</p>
+            </div>
+        </div>
+        
+        <div class="category">關於輔導員</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">輔導員有什麼資歷？</div>
+            <div class="faq-answer">
+                <p>我們的輔導員均持有香港專業資格，包括：臨床心理學家（香港心理學會註冊）、輔導心理學家（香港輔導心理學協會會員）、註冊社工（社會工作者註冊局）。所有輔導員均有至少5年以上臨床經驗。</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">可以更換輔導員嗎？</div>
+            <div class="faq-answer">
+                <p>完全可以。如果你覺得與當前輔導員的配對不太合適，可以聯絡我們安排另一位輔導員。我們希望確保你能找到最適合自己的專業支援。</p>
+            </div>
+        </div>
+        
+        <div class="category">關於預約和付款</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">如何預約諮詢？</div>
+            <div class="faq-answer">
+                <p>你可以通過以下方式預約：1) 填寫網站上的聯絡表單；2) Telegram @Szechunbot；3) WhatsApp 9194 6650。我們會在24小時內回覆你，確認時間和輔導員。</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">支持什麼付款方式？</div>
+            <div class="faq-answer">
+                <p>我們支持：1) Stripe信用卡支付（Visa/Master/Amex）；2) FPS轉數快（號碼：9194 6650）；3) 銀行轉帳。月費計劃會自動續期，隨時可以在賬戶內取消。</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">可以取消或改期嗎？</div>
+            <div class="faq-answer">
+                <p>可以。請在預約時間前24小時通知我們，可以免費改期。少於24小時通知可能會收取50%費用作為行政費。緊急情況除外，我們會彈性處理。</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>還有其他問題？</h2>
+            <p>直接聯絡我們，團隊會在24小時內回覆</p>
+            <a href="contact.html" class="cta-btn">聯絡我們</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2026 南風心理輔導 | <a href="index.html">返回首頁</a></p>
+    </footer>
+    
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked if wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
