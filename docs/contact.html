@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們 - 南風心理輔導</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #4A7C6F;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --bg: #F8F6F3;
+            --error: #EF4444;
+            --success: #10B981;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #1E3A2F);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        label .required {
+            color: var(--error);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
+            flex: 1;
+            min-width: 140px;
+        }
+        
+        .radio-option input {
+            display: none;
+        }
+        
+        .radio-option label {
+            display: block;
+            padding: 1rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .radio-option input:checked + label {
+            border-color: var(--primary);
+            background: rgba(45, 90, 74, 0.05);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-item .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .contact-item .value {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 480px) {
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>聯絡我們</h1>
+        <p>有任何問題？我們會在 24 小時內回覆</p>
+    </header>
+    
+    <div class="container">
+        <div class="form-card">
+            <form action="https://formspree.io/f/xnqevjdr" method="POST">
+                <div class="form-group">
+                    <label>你如何稱呼？ <span class="required">*</span></label>
+                    <input type="text" name="name" placeholder="你的名字" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>聯絡方式 <span class="required">*</span></label>
+                    <input type="text" name="contact" placeholder="Telegram / WhatsApp / 電郵" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>諮詢類型</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="type" value="monthly" id="type-monthly">
+                            <label for="type-monthly">月費計劃</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="type" value="30min" id="type-30min">
+                            <label for="type-30min">30分鐘單次</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="type" value="60min" id="type-60min">
+                            <label for="type-60min">60分鐘單次</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="type" value="question" id="type-question" checked>
+                            <label for="type-question">一般查詢</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>想和我們說什麼？ <span class="required">*</span></label>
+                    <textarea name="message" placeholder="描述你的需求或問題..." required></textarea>
+                </div>
+                
+                <input type="hidden" name="_subject" value="南風心理輔導 - 新查詢">
+                <input type="hidden" name="_next" value="https://southwind-counselling.vercel.app/thanks.html">
+                
+                <button type="submit" class="submit-btn">發送消息</button>
+            </form>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <div class="label">Telegram</div>
+                    <div class="value">@Szechunbot</div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">💬</div>
+                    <div class="label">WhatsApp</div>
+                    <div class="value">9194 6650</div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <div class="label">電郵</div>
+                    <div class="value">hello@southwind.hk</div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">💰</div>
+                    <div class="label">FPS</div>
+                    <div class="value">9194 6650</div>
+                </div>
+            </div>
+            
+            <a href="index.html" class="back-link">← 返回首頁</a>
+        </div>
+    </div>
+</body>
+</html>
