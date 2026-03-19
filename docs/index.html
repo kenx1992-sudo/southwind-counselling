@@ -161,6 +161,121 @@
             box-shadow: var(--shadow);
         }
         
+        /* Core Services (壹点灵風格) */
+        .core-services {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--secondary) 100%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            border-color: rgba(45, 90, 74, 0.1);
+        }
+        
+        .service-card.featured {
+            background: linear-gradient(135deg, rgba(45,90,74,0.05), rgba(74,124,111,0.05));
+            border: 2px solid var(--primary);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+        
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: rgba(45, 90, 74, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .service-tag.hot {
+            background: linear-gradient(135deg, #EF4444, #DC2626);
+            color: white;
+        }
+        
+        .service-arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover .service-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        @media (max-width: 968px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 568px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Features Section */
         .features {
             background: var(--white);
@@ -654,6 +769,46 @@
                 <path d="M 185 165 Q 200 175 215 165" stroke="#2D5A4A" stroke-width="3" fill="none"/>
                 <text x="200" y="360" text-anchor="middle" fill="white" font-size="16" font-family="Noto Sans TC">Southwind Counselling</text>
             </svg>
+        </div>
+    </section>
+
+    <!-- 核心功能入口 (壹点灵風格) -->
+    <section class="core-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>探索我們的服務</h2>
+                <p>從自我探索到專業支援，我們陪伴你每一步</p>
+            </div>
+            <div class="services-grid">
+                <a href="assessments/index.html" class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #3B82F6, #1D4ED8);">📊</div>
+                    <h3>心理測評</h3>
+                    <p>免費專業量表，了解你的情緒狀態</p>
+                    <span class="service-tag">免費</span>
+                    <div class="service-arrow">→</div>
+                </a>
+                <a href="community/index.html" class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">💬</div>
+                    <h3>心事傾訴</h3>
+                    <p>匿名分享心事，專家為你解答</p>
+                    <span class="service-tag">匿名</span>
+                    <div class="service-arrow">→</div>
+                </a>
+                <a href="content/index.html" class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">📚</div>
+                    <h3>資源中心</h3>
+                    <p>精選文章音頻，陪你成長</p>
+                    <span class="service-tag">精選</span>
+                    <div class="service-arrow">→</div>
+                </a>
+                <a href="#booking" class="service-card featured">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #2D5A4A, #4A7C6F);">👨‍⚕️</div>
+                    <h3>預約輔導</h3>
+                    <p>一對一專業輔導，首節免費</p>
+                    <span class="service-tag hot">首節免費</span>
+                    <div class="service-arrow">→</div>
+                </a>
+            </div>
         </div>
     </section>
 
