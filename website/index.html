@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南風心理輔導室 Southwind Counselling | 專業線上心理輔導平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #4A7C6F;
+            --secondary: #F5F0E8;
+            --accent: #E8B86D;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--secondary);
+        }
+        
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Features Section */
+        .features {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            padding: 2rem;
+            background: var(--secondary);
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 2rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .step h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .step p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Counselors Section */
+        .counselors {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+        
+        .counselors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .counselor-card {
+            background: var(--secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .counselor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .counselor-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .counselor-info {
+            padding: 1.5rem;
+        }
+        
+        .counselor-info h3 {
+            margin-bottom: 0.3rem;
+        }
+        
+        .counselor-title {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .counselor-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        /* Booking Section */
+        .booking {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .booking .section-title h2,
+        .booking .section-title p {
+            color: white;
+        }
+        
+        .booking-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            color: var(--text);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 5rem 2rem;
+            background: var(--secondary);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: #9CA3AF;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9CA3AF;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 8rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid,
+            .counselors-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">南</div>
+                <span>南風心理輔導室</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="assessments/index.html">心理測評</a></li>
+                <li><a href="community/index.html">心事傾訴</a></li>
+                <li><a href="content/index.html">資源中心</a></li>
+                <li><a href="#counselors">輔導員</a></li>
+                <li><a href="counselor-join/index.html">加入我們</a></li>
+            </ul>
+            <a href="#booking" class="cta-btn">立即預約</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>你並不孤單。<br><span>南風</span>與你同行。</h1>
+            <p class="hero-subtitle">
+                香港專業線上心理輔導平台。無論何時何地，專業輔導員都在這裡傾聽你的心聲。
+                保密、專業、可負擔的心理健康服務。
+            </p>
+            <a href="#booking" class="cta-btn">免費初步諮詢</a>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">專業輔導員</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">服務個案</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.9</div>
+                    <div class="stat-label">用戶評分</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 400 400" style="width:100%; border-radius:20px;">
+                <defs>
+                    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4A7C6F"/>
+                        <stop offset="100%" style="stop-color:#2D5A4A"/>
+                    </linearGradient>
+                </defs>
+                <rect width="400" height="400" fill="url(#bg)" rx="20"/>
+                <circle cx="200" cy="150" r="60" fill="#F5F0E8" opacity="0.9"/>
+                <ellipse cx="200" cy="280" rx="100" ry="80" fill="#F5F0E8" opacity="0.9"/>
+                <circle cx="180" cy="140" r="5" fill="#2D5A4A"/>
+                <circle cx="220" cy="140" r="5" fill="#2D5A4A"/>
+                <path d="M 185 165 Q 200 175 215 165" stroke="#2D5A4A" stroke-width="3" fill="none"/>
+                <text x="200" y="360" text-anchor="middle" fill="white" font-size="16" font-family="Noto Sans TC">Southwind Counselling</text>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>為何選擇南風？</h2>
+                <p>我們致力打破心理健康服務的種種障礙，讓專業輔導變得觸手可及</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>隨時隨地</h3>
+                    <p>無需舟車勞頓，手機或電腦即可進行視像輔導。早上、深夜，隨你選擇。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>絕對保密</h3>
+                    <p>所有對話經端對端加密，符合香港私隱條例。你的秘密，只屬於你。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>價格透明</h3>
+                    <p>明碼實價，無隱藏收費。首次諮詢免費，後續每次低至$300起。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>專業認證</h3>
+                    <p>所有輔導員均持有香港專業資格，包括臨床心理學家、輔導心理學家等。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>配對精準</h3>
+                    <p>AI智能配對系統，根據你的需要和偏好，找到最適合你的輔導員。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>緊急支援</h3>
+                    <p>24小時危機熱線。當你需要立即傾訴，我們隨時在線。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>簡單四步，開始你的療癒之旅</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>填寫問卷</h3>
+                    <p>簡單幾條問題，讓我們了解你的需要和偏好</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>智能配對</h3>
+                    <p>系統根據專業領域、語言、性別偏好為你配對</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>選擇時段</h3>
+                    <p>瀏覽輔導員的行事曆，選擇最適合你的時間</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>開始輔導</h3>
+                    <p>透過視像或語音，在安全的空間開始對話</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counselors -->
+    <section class="counselors" id="counselors">
+        <div class="container">
+            <div class="section-title">
+                <h2>我們的專業團隊</h2>
+                <p>每一位輔導員都經過嚴格篩選，具備豐富臨床經驗</p>
+            </div>
+            <div class="counselors-grid">
+                <div class="counselor-card">
+                    <div class="counselor-img">👩‍⚕️</div>
+                    <div class="counselor-info">
+                        <h3>陳雅婷博士</h3>
+                        <div class="counselor-title">臨床心理學家</div>
+                        <p>香港大學心理學博士，15年臨床經驗</p>
+                        <div class="counselor-tags">
+                            <span class="tag">抑鬱症</span>
+                            <span class="tag">焦慮症</span>
+                            <span class="tag">創傷</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="counselor-card">
+                    <div class="counselor-img">👨‍⚕️</div>
+                    <div class="counselor-info">
+                        <h3>李志偉先生</h3>
+                        <div class="counselor-title">輔導心理學家</div>
+                        <p>專注於家庭關係及青少年心理</p>
+                        <div class="counselor-tags">
+                            <span class="tag">家庭治療</span>
+                            <span class="tag">青少年</span>
+                            <span class="tag">人際關係</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="counselor-card">
+                    <div class="counselor-img">👩‍⚕️</div>
+                    <div class="counselor-info">
+                        <h3>王美琪女士</h3>
+                        <div class="counselor-title">註冊社工</div>
+                        <p>擅長情緒管理及職場壓力</p>
+                        <div class="counselor-tags">
+                            <span class="tag">職場壓力</span>
+                            <span class="tag">情緒管理</span>
+                            <span class="tag">生涯規劃</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="counselor-card">
+                    <div class="counselor-img">👨‍⚕️</div>
+                    <div class="counselor-info">
+                        <h3>張浩然博士</h3>
+                        <div class="counselor-title">臨床心理學家</div>
+                        <p>專注於認知行為治療及成癮輔導</p>
+                        <div class="counselor-tags">
+                            <span class="tag">成癮輔導</span>
+                            <span class="tag">CBT</span>
+                            <span class="tag">睡眠問題</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>立即預約你的專屬輔導</h2>
+                <p>邁出第一步，就是改變的開始</p>
+            </div>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">姓名 *</label>
+                        <input type="text" id="name" name="name" required placeholder="你的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">電話號碼 *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="5xxx xxxx">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">電郵地址 *</label>
+                        <input type="email" id="email" name="email" required placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">年齡</label>
+                        <input type="number" id="age" name="age" min="18" max="100" placeholder="18">
+                    </div>
+                    <div class="form-group">
+                        <label for="concern">主要困擾 *</label>
+                        <select id="concern" name="concern" required>
+                            <option value="">請選擇</option>
+                            <option value="depression">抑鬱/情緒低落</option>
+                            <option value="anxiety">焦慮/驚恐</option>
+                            <option value="relationship">人際/感情關係</option>
+                            <option value="family">家庭問題</option>
+                            <option value="work">工作/學業壓力</option>
+                            <option value="trauma">創傷經歷</option>
+                            <option value="addiction">成癮問題</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="preference">輔導員偏好</label>
+                        <select id="preference" name="preference">
+                            <option value="">無特別偏好</option>
+                            <option value="female">女性輔導員</option>
+                            <option value="male">男性輔導員</option>
+                            <option value="cantonese">粵語母語</option>
+                            <option value="english">英語</option>
+                            <option value="mandarin">普通話</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">首選日期</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">首選時段</label>
+                        <select id="time" name="time">
+                            <option value="">請選擇</option>
+                            <option value="morning">上午 (9:00-12:00)</option>
+                            <option value="afternoon">下午 (12:00-18:00)</option>
+                            <option value="evening">晚上 (18:00-22:00)</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">想對我們說的話（可選）</label>
+                        <textarea id="message" name="message" placeholder="簡單描述你的情況，讓我們更好地為你準備..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">提交預約申請</button>
+                <p style="text-align:center; margin-top:1rem; color:#6B7280; font-size:0.9rem;">
+                    提交後，我們會在24小時內聯絡你確認詳情。首次諮詢完全免費。
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>明碼實價，無隱藏收費</h2>
+                <p>選擇最適合你的方案</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>首次諮詢</h3>
+                    <div class="price">免費<span>/20分鐘</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 初步評估</li>
+                        <li>✓ 了解你的需要</li>
+                        <li>✓ 配對建議</li>
+                        <li>✓ 無需信用卡</li>
+                    </ul>
+                    <a href="#booking" class="cta-btn">立即預約</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>單次輔導</h3>
+                    <div class="price">$500<span>/50分鐘</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 專業輔導員</li>
+                        <li>✓ 50分鐘深度對話</li>
+                        <li>✓ 視像/語音/文字</li>
+                        <li>✓ 24小時內預約</li>
+                        <li>✓ 彈性時間</li>
+                    </ul>
+                    <a href="#booking" class="cta-btn">選擇此方案</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>月度計劃</h3>
+                    <div class="price">$1,800<span>/4次</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 每週一次輔導</li>
+                        <li>✓ 固定輔導員</li>
+                        <li>✓ 優先預約</li>
+                        <li>✓ 免費進度評估</li>
+                        <li>✓ 節省$200</li>
+                    </ul>
+                    <a href="#booking" class="cta-btn">選擇此方案</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">南</div>
+                    <span>南風心理輔導室</span>
+                </div>
+                <p>香港領先的線上心理輔導平台。我們相信每個人都值得被傾聽，每顆心都值得被溫柔對待。</p>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">in</a>
+                    <a href="#">ig</a>
+                    <a href="#">wa</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>服務</h4>
+                <ul>
+                    <li><a href="#">個人輔導</a></li>
+                    <li><a href="#">伴侶輔導</a></li>
+                    <li><a href="#">家庭治療</a></li>
+                    <li><a href="#">危機支援</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>關於</h4>
+                <ul>
+                    <li><a href="#">心理測評</a></li>
+                    <li><a href="#">輔導員團隊</a></li>
+                    <li><a href="#">加入我們</a></li>
+                    <li><a href="#">媒體報導</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>支援</h4>
+                <ul>
+                    <li><a href="#">加入我們</a></li>
+                    <li><a href="#">私隱政策</a></li>
+                    <li><a href="#">服務條款</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 南風心理輔導室 Southwind Counselling. 保留所有權利。</p>
+        </div>
+    </footer>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle" onclick="toggleLang()">English</div>
+
+    <script>
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show confirmation
+            alert('感謝你的預約！我們已收到你的申請，將在24小時內致電 ' + data.phone + ' 與你確認詳情。');
+            
+            // In production, this would send to backend
+            console.log('Booking submitted:', data);
+        });
+
+        // Language toggle
+        let isChinese = true;
+        function toggleLang() {
+            isChinese = !isChinese;
+            document.querySelector('.lang-toggle').textContent = isChinese ? 'English' : '中文';
+            // In production, this would switch the entire page content
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Set minimum date for booking
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+    </script>
+</body>
+</html>

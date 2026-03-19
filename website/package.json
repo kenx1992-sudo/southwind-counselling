@@ -1,0 +1,14 @@
+{
+  "name": "southwind-counselling",
+  "version": "1.0.0",
+  "description": "南風心理輔導室官方網站",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "deploy": "vercel --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenx1992-sudo/southwind-counselling.git"
+  },
+  "license": "MIT"
+}

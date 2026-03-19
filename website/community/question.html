@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>問題詳情 - 南風心理輔導室</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #4A7C6F;
+            --secondary: #F5F0E8;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--secondary);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        
+        /* 頭部 */
+        .page-header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .back-btn {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .logo {
+            font-weight: 700;
+            color: var(--primary);
+            margin-left: auto;
+        }
+        
+        /* 主容器 */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* 問題卡片 */
+        .question-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .question-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-tag {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .resolved-tag {
+            padding: 0.5rem 1rem;
+            background: #DCFCE7;
+            color: #166534;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .question-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+        
+        .question-content {
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .author-details h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-details span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .question-actions {
+            display: flex;
+            gap: 1rem;
+            margin-left: auto;
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #E5E7EB;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* 專家回覆 */
+        .expert-reply {
+            background: linear-gradient(135deg, rgba(45,90,74,0.05), rgba(74,124,111,0.05));
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .expert-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .expert-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .expert-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .expert-info span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .expert-badge {
+            margin-left: auto;
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .expert-content {
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .expert-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(45,90,74,0.1);
+        }
+        
+        .helpful-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .helpful-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* 用戶回覆區 */
+        .replies-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+        
+        .replies-header {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .reply-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .reply-item:last-child {
+            border-bottom: none;
+        }
+        
+        .reply-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .reply-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #F3F4F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .reply-author {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .reply-time {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .reply-content {
+            color: var(--text);
+            line-height: 1.7;
+            padding-left: 3rem;
+        }
+        
+        /* 回覆表單 */
+        .reply-form {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .reply-form h3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .reply-form textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+        
+        .reply-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .form-footer label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .submit-reply-btn {
+            padding: 0.875rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-reply-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        /* 相關推薦 */
+        .related-section {
+            margin-top: 3rem;
+        }
+        
+        .related-section h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .related-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .related-item {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+        
+        .related-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .related-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .related-item span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- 頭部 -->
+    <header class="page-header">
+        <a href="index.html" class="back-btn">← 返回心事區</a>
+        <span class="logo">南風心理輔導室</span>
+    </header>
+
+    <!-- 主容器 -->
+    <main class="container">
+        <!-- 問題內容 -->
+        <div class="question-card" id="questionCard"></div>
+
+        <!-- 專家回覆 -->
+        <div class="expert-reply" id="expertReply" style="display:none"></div>
+
+        <!-- 用戶回覆 -->
+        <div class="replies-section">
+            <h3 class="replies-header">💬 網友回覆</h3>
+            <div class="replies-list" id="repliesList">
+                <div class="reply-item">
+                    <div class="reply-header">
+                        <div class="reply-avatar">💙</div>
+                        <span class="reply-author">溫暖的陌生人</span>
+                        <span class="reply-time">2天前</span>
+                    </div>
+                    <div class="reply-content">
+                        我也曾經歷過類似的情況，明白你的感受。想告訴你的是，這種狀態不會永遠持續，求助是勇敢的表現。加油！
+                    </div>
+                </div>
+                <div class="reply-item">
+                    <div class="reply-header">
+                        <div class="reply-avatar">🌸</div>
+                        <span class="reply-author">同路人</span>
+                        <span class="reply-time">1天前</span>
+                    </div>
+                    <div class="reply-content">
+                        建議可以試試看南風的免費測評，先了解自己的狀況，再決定是否需要預約專業輔導。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 回覆表單 -->
+        <div class="reply-form">
+            <h3>✍️ 寫下你的回覆</h3>
+            <textarea placeholder="分享你的經驗或建議，讓發問者知道有人在支持他..."></textarea>
+            <div class="form-footer">
+                <label><input type="checkbox" checked> 匿名回覆</label>
+                <button class="submit-reply-btn" onclick="submitReply()">發布回覆</button>
+            </div>
+        </div>
+
+        <!-- 相關推薦 -->
+        <div class="related-section">
+            <h3>📌 相關心事</h3>
+            <div class="related-list" id="relatedList"></div>
+        </div>
+    </main>
+
+    <script src="community-data.js"></script>
+    <script>
+        // 獲取問題ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const questionId = parseInt(urlParams.get('id')) || 1;
+        
+        // 查找問題
+        const question = communityDB.questions.find(q => q.id === questionId) || communityDB.questions[0];
+        
+        // 獲取分類信息
+        const category = communityDB.categories.find(c => c.id === question.category);
+        
+        // 渲染問題
+        function renderQuestion() {
+            const card = document.getElementById('questionCard');
+            card.innerHTML = `
+                <div class="question-meta">
+                    <span class="category-tag" style="background: ${category.color}20; color: ${category.color}">
+                        ${category.icon} ${category.name}
+                    </span>
+                    ${question.isResolved ? '<span class="resolved-tag">✓ 已解答</span>' : ''}
+                </div>
+                <h1 class="question-title">${question.title}</h1>
+                <p class="question-content">${question.content}</p>
+                <div class="author-info">
+                    <div class="author-avatar">${question.avatar}</div>
+                    <div class="author-details">
+                        <h4>${question.author}</h4>
+                        <span>發布於 ${question.date}</span>
+                    </div>
+                    <div class="question-actions">
+                        <button class="action-btn" onclick="likeQuestion()">❤️ ${question.likes}</button>
+                        <button class="action-btn">🔗 分享</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // 渲染專家回覆
+        function renderExpertReply() {
+            if (!question.counselorReply) return;
+            
+            const reply = question.counselorReply;
+            const div = document.getElementById('expertReply');
+            div.style.display = 'block';
+            div.innerHTML = `
+                <div class="expert-header">
+                    <div class="expert-avatar">👨‍⚕️</div>
+                    <div class="expert-info">
+                        <h4>${reply.name} 輔導員</h4>
+                        <span>${reply.title}</span>
+                    </div>
+                    <span class="expert-badge">✓ 認證專家</span>
+                </div>
+                <div class="expert-content">${reply.content}</div>
+                <div class="expert-footer">
+                    <span>${reply.likes} 人覺得有幫助</span>
+                    <button class="helpful-btn" onclick="markHelpful()">👍 對我有幫助</button>
+                </div>
+            `;
+        }
+        
+        // 渲染相關問題
+        function renderRelated() {
+            const related = communityDB.questions
+                .filter(q => q.id !== question.id && q.category === question.category)
+                .slice(0, 3);
+            
+            document.getElementById('relatedList').innerHTML = related.map(q => `
+                <a href="question.html?id=${q.id}" class="related-item">
+                    <h4>${q.title}</h4>
+                    <span>${q.replies} 回覆 · ${q.likes} 關心</span>
+                </a>
+            `).join('');
+        }
+        
+        // 功能
+        function likeQuestion() {
+            alert('已點讚！感謝你的支持。');
+        }
+        
+        function markHelpful() {
+            alert('感謝反饋！我們會告知輔導員。');
+        }
+        
+        function submitReply() {
+            alert('回覆已提交！審核後會顯示。');
+        }
+        
+        // 初始化
+        renderQuestion();
+        renderExpertReply();
+        renderRelated();
+    </script>
+</body>
+</html>

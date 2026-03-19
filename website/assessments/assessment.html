@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在測評 - 南風心理輔導室</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #4A7C6F;
+            --secondary: #F5F0E8;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--secondary);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        
+        /* 進度條 */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #E5E7EB;
+            z-index: 100;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transition: width 0.3s ease;
+        }
+        
+        /* 頭部 */
+        .assessment-header {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-link {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .assessment-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .progress-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* 主容器 */
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* 開始頁面 */
+        .start-page {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .start-page .icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .start-page h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .start-page .subtitle {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .start-page .description {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: left;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .start-page .description h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .start-page .description p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        .start-page .meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .start-page .meta-item {
+            text-align: center;
+        }
+        
+        .start-page .meta-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .start-page .meta-item .label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .start-btn {
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* 題目頁面 */
+        .question-page {
+            display: none;
+        }
+        
+        .question-page.active {
+            display: block;
+        }
+        
+        .question-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .question-number {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .question-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .option-item {
+            padding: 1.25rem 1.5rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .option-item:hover {
+            border-color: var(--primary);
+            background: rgba(45, 90, 74, 0.05);
+        }
+        
+        .option-item.selected {
+            border-color: var(--primary);
+            background: rgba(45, 90, 74, 0.1);
+        }
+        
+        .option-text {
+            font-size: 1.1rem;
+        }
+        
+        .option-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* 結果頁面 */
+        .result-page {
+            display: none;
+        }
+        
+        .result-page.active {
+            display: block;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .result-header {
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .result-header .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+        
+        .result-header .score-number {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .result-header .score-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .result-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-header p {
+            opacity: 0.9;
+        }
+        
+        .result-body {
+            padding: 2rem 3rem;
+        }
+        
+        .result-section {
+            margin-bottom: 2rem;
+        }
+        
+        .result-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .result-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        .result-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem 3rem 3rem;
+        }
+        
+        .result-actions button {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--text);
+            border: 2px solid #E5E7EB;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-light);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* 免責聲明 */
+        .disclaimer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #FEF3C7;
+            border-radius: 12px;
+            border-left: 4px solid #F59E0B;
+        }
+        
+        .disclaimer p {
+            font-size: 0.9rem;
+            color: #92400E;
+        }
+        
+        /* 響應式 */
+        @media (max-width: 768px) {
+            .assessment-container {
+                padding: 2rem 1rem;
+            }
+            
+            .question-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .question-text {
+                font-size: 1.25rem;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 進度條 -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+
+    <!-- 頭部 -->
+    <header class="assessment-header">
+        <a href="index.html" class="back-link">← 返回測評中心</a>
+        <span class="assessment-title" id="headerTitle"></span>
+        <span class="progress-text" id="progressText"></span>
+    </header>
+
+    <!-- 主容器 -->
+    <main class="assessment-container">
+        <!-- 開始頁面 -->
+        <div class="start-page" id="startPage">
+            <div class="icon" id="startIcon"></div>
+            <h1 id="startTitle"></h1>
+            <p class="subtitle" id="startSubtitle"></p>
+            
+            <div class="meta">
+                <div class="meta-item">
+                    <div class="number" id="questionCount"></div>
+                    <div class="label">題目數</div>
+                </div>
+                <div class="meta-item">
+                    <div class="number" id="duration"></div>
+                    <div class="label">預計時間</div>
+                </div>
+            </div>
+            
+            <div class="description">
+                <h3>📋 測評說明</h3>
+                <p id="instructions"></p>
+            </div>
+            
+            <button class="start-btn" id="startBtn">開始測評</button>
+        </div>
+
+        <!-- 題目頁面 -->
+        <div class="question-page" id="questionPage">
+            <div class="question-card">
+                <div class="question-number" id="questionNumber"></div>
+                <h2 class="question-text" id="questionText"></h2>
+                
+                <div class="options-list" id="optionsList"></div>
+            </div>
+        </div>
+
+        <!-- 結果頁面 -->
+        <div class="result-page" id="resultPage">
+            <div class="result-card">
+                <div class="result-header" id="resultHeader">
+                    <div class="score-circle">
+                        <div class="score-number" id="resultScore"></div>
+                        <div class="score-label">總分</div>
+                    </div>
+                    <h2 id="resultLevel"></h2>
+                    <p id="resultDesc"></p>
+                </div>
+                
+                <div class="result-body">
+                    <div class="result-section">
+                        <h3>💡 專業建議</h3>
+                        <p id="resultSuggestion"></p>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <p id="disclaimerText"></p>
+                    </div>
+                </div>
+                
+                <div class="result-actions">
+                    <button class="btn-primary" onclick="bookConsultation()">預約專業輔導</button>
+                    <button class="btn-secondary" onclick="retakeAssessment()">重新測評</button>
+                    <button class="btn-secondary" onclick="shareResult()">分享結果</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assessments-data.js"></script>
+    <script>
+        // 獲取 URL 參數
+        const urlParams = new URLSearchParams(window.location.search);
+        const assessmentId = urlParams.get('id') || 'phq9';
+        
+        // 獲取測評數據
+        const assessment = assessmentsDB[assessmentId];
+        if (!assessment) {
+            alert('測評不存在');
+            window.location.href = 'index.html';
+        }
+        
+        // 狀態管理
+        let currentQuestion = 0;
+        let answers = [];
+        
+        // 初始化開始頁面
+        document.getElementById('startIcon').textContent = assessment.icon;
+        document.getElementById('startTitle').textContent = assessment.title;
+        document.getElementById('startSubtitle').textContent = assessment.subtitle;
+        document.getElementById('questionCount').textContent = assessment.questions;
+        document.getElementById('duration').textContent = assessment.duration;
+        document.getElementById('instructions').textContent = assessment.instructions;
+        document.getElementById('headerTitle').textContent = assessment.title;
+        
+        // 設置主題色
+        document.getElementById('startBtn').style.background = assessment.color;
+        
+        // 開始測評
+        document.getElementById('startBtn').addEventListener('click', () => {
+            document.getElementById('startPage').style.display = 'none';
+            document.getElementById('questionPage').classList.add('active');
+            showQuestion(0);
+        });
+        
+        // 顯示題目
+        function showQuestion(index) {
+            currentQuestion = index;
+            const question = assessment.items[index];
+            
+            // 更新進度
+            const progress = ((index + 1) / assessment.items.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `${index + 1}/${assessment.items.length}`;
+            
+            // 更新題目
+            document.getElementById('questionNumber').textContent = `問題 ${index + 1} of ${assessment.items.length}`;
+            document.getElementById('questionText').textContent = question.text;
+            
+            // 渲染選項
+            const optionsHtml = question.options.map((opt, i) => `
+                <div class="option-item" data-value="${opt.value}" onclick="selectOption(${opt.value})">
+                    <div>
+                        <div class="option-text">${opt.text}</div>
+                        ${opt.desc ? `<div class="option-desc">${opt.desc}</div>` : ''}
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('optionsList').innerHTML = optionsHtml;
+        }
+        
+        // 選擇選項
+        function selectOption(value) {
+            answers[currentQuestion] = value;
+            
+            // 視覺反饋
+            document.querySelectorAll('.option-item').forEach(el => {
+                el.classList.remove('selected');
+                if (parseInt(el.dataset.value) === value) {
+                    el.classList.add('selected');
+                }
+            });
+            
+            // 延遲進入下一題
+            setTimeout(() => {
+                if (currentQuestion < assessment.items.length - 1) {
+                    showQuestion(currentQuestion + 1);
+                } else {
+                    showResult();
+                }
+            }, 300);
+        }
+        
+        // 顯示結果
+        function showResult() {
+            document.getElementById('questionPage').classList.remove('active');
+            document.getElementById('resultPage').classList.add('active');
+            document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('progressText').textContent = '完成';
+            
+            // 計算總分
+            const totalScore = answers.reduce((a, b) => a + b, 0);
+            
+            // 獲取結果級別
+            const range = assessment.scoring.ranges.find(r => totalScore >= r.min && totalScore <= r.max);
+            
+            // 渲染結果
+            document.getElementById('resultScore').textContent = totalScore;
+            document.getElementById('resultLevel').textContent = range.level;
+            document.getElementById('resultDesc').textContent = range.desc;
+            document.getElementById('resultSuggestion').textContent = range.suggestion;
+            document.getElementById('disclaimerText').textContent = assessment.disclaimer;
+            
+            // 設置結果頁主題色
+            const header = document.getElementById('resultHeader');
+            header.style.background = range.color;
+            
+            // 保存到本地存儲
+            saveResult(totalScore, range);
+        }
+        
+        // 保存結果
+        function saveResult(score, range) {
+            const results = JSON.parse(localStorage.getItem('assessmentResults') || '[]');
+            results.push({
+                id: assessmentId,
+                title: assessment.title,
+                score: score,
+                level: range.level,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('assessmentResults', JSON.stringify(results));
+        }
+        
+        // 預約輔導
+        function bookConsultation() {
+            window.location.href = '../index.html#booking';
+        }
+        
+        // 重新測評
+        function retakeAssessment() {
+            answers = [];
+            document.getElementById('resultPage').classList.remove('active');
+            document.getElementById('startPage').style.display = 'block';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('progressText').textContent = '';
+        }
+        
+        // 分享結果
+        function shareResult() {
+            const text = `我在南風心理輔導室完成了【${assessment.title}】，結果是：${document.getElementById('resultLevel').textContent}`;
+            if (navigator.share) {
+                navigator.share({
+                    title: '我的心理測評結果',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(text + ' ' + window.location.href);
+                alert('結果已複製到剪貼板');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>諮詢師入駐 - 南風心理輔導室</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* 入駐頁面專用樣式 */
+        .join-hero {
+            background: linear-gradient(135deg, #1D3D32 0%, var(--primary) 100%);
+            color: white;
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+        }
+        
+        .join-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .join-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .hero-stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 入駐流程 */
+        .process-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -0.75rem;
+            top: 2rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* 入駐條件 */
+        .requirements-section {
+            background: var(--secondary);
+            padding: 4rem 2rem;
+        }
+        
+        .requirements-grid {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .requirement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .requirement-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .requirement-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .requirement-card ul {
+            list-style: none;
+        }
+        
+        .requirement-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        
+        .requirement-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* 平台優勢 */
+        .benefits-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .benefit-item .icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .benefit-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .benefit-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* 收益說明 */
+        .income-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .income-section h2 {
+            margin-bottom: 2rem;
+        }
+        
+        .income-cards {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .income-card {
+            background: rgba(255,255,255,0.15);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .income-card .amount {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .income-card .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* 申請表單 */
+        .application-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .application-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group label .required {
+            color: #EF4444;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* 文件上傳 */
+        .file-upload {
+            border: 2px dashed #E5E7EB;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: rgba(45, 90, 74, 0.05);
+        }
+        
+        .file-upload .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .file-upload p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .file-upload .hint {
+            font-size: 0.85rem;
+            color: #9CA3AF;
+        }
+        
+        .submit-application {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-application:hover {
+            background: var(--primary-light);
+        }
+        
+        /* 響應式 */
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-step:not(:last-child)::after {
+                content: '↓';
+                right: auto;
+                top: auto;
+                bottom: -1.5rem;
+            }
+            
+            .requirements-grid,
+            .benefits-grid,
+            .income-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">南</div>
+                <span>南風心理輔導室</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">首頁</a></li>
+                <li><a href="../assessments/index.html">心理測評</a></li>
+                <li><a href="../community/index.html">心事傾訴</a></li>
+                <li><a href="index.html">加入我們</a></li>
+            </ul>
+            <a href="#apply" class="cta-btn">立即申請</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="join-hero">
+        <div class="container">
+            <h1>加入南風，與我們一起幫助更多人</h1>
+            <p>成為南風認證輔導員，靈活接案、專業成長，同時獲得穩定收入。<br>我們期待與有熱情的專業人士合作。</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="number">500+</div>
+                    <div class="label">活躍輔導員</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="number">80%</div>
+                    <div class="label">收入分成</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="number">2hr</div>
+                    <div class="label">平均上線時數</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 入駐流程 -->
+    <section class="process-section">
+        <h2 style="text-align:center">入駐流程</h2>
+        
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-title">提交申請</div>
+                <div class="step-desc">填寫資料上傳證書</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-title">資格審核</div>
+                <div class="step-desc">3-5個工作日</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-title">專業面試</div>
+                <div class="step-desc">線上面試評估</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-title">簽約入駐</div>
+                <div class="step-desc">確認合作條款</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-title">開始接案</div>
+                <div class="step-desc">上線服務來訪者</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 入駐條件 -->
+    <section class="requirements-section">
+        <h2 style="text-align:center">入駐條件</h2>
+        
+        <div class="requirements-grid">
+            <div class="requirement-card">
+                <div class="icon">🎓</div>
+                <h3>專業資格</h3>
+                <ul>
+                    <li>香港心理學會註冊心理學家</li>
+                    <li>香港輔導心理學協會會員</li>
+                    <li>社會工作者註冊局註冊社工</li>
+                    <li>或其他專業認證資格</li>
+                </ul>
+            </div>
+            
+            <div class="requirement-card">
+                <div class="icon">📋</div>
+                <h3>執業經驗</h3>
+                <ul>
+                    <li>至少2年相關工作經驗</li>
+                    <li>累計100小時以上個案時數</li>
+                    <li>持續接受專業督導</li>
+                    <li>無專業失德行為紀錄</li>
+                </ul>
+            </div>
+            
+            <div class="requirement-card">
+                <div class="icon">💻</div>
+                <h3>基本設備</h3>
+                <ul>
+                    <li>穩定的網絡連接</li>
+                    <li>可進行視訊的設備</li>
+                    <li>安靜的諮詢環境</li>
+                    <li>每周至少8小時可接案</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 平台優勢 -->
+    <section class="benefits-section">
+        <h2 style="text-align:center">為什麼選擇南風？</h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="icon">💰</div>
+                <div>
+                    <h4>高額收入分成</h4>
+                    <p>業界領先的80%收入分成比例，你的專業價值得到最大回報。</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="icon">⏰</div>
+                <div>
+                    <h4>彈性工作時間</h4>
+                    <p>完全自主設定服務時間，兼職全職皆可，平衡工作與生活。</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="icon">🎓</div>
+                <div>
+                    <h4>專業成長支持</h4>
+                    <p>免費參與內部督導、專業培訓、案例研討會，持續精進專業能力。</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="icon">🛡️</div>
+                <div>
+                    <h4>執業保障</h4>
+                    <p>提供專業責任保險、法律諮詢支持，讓你安心執業。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 收益說明 -->
+    <section class="income-section">
+        <h2>收入參考</h2>
+        
+        <div class="income-cards">
+            <div class="income-card">
+                <div class="amount">$400</div>
+                <div class="label">每小時諮詢收入</div>
+            </div>
+            <div class="income-card">
+                <div class="amount">$15K+</div>
+                <div class="label">兼職月收入預估</div>
+            </div>
+            <div class="income-card">
+                <div class="amount">$40K+</div>
+                <div class="label">全職月收入預估</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 申請表單 -->
+    <section class="application-section" id="apply">
+        <h2 style="text-align:center; margin-bottom: 2rem;">提交入駐申請</h2>
+        
+        <form class="application-form" onsubmit="submitApplication(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>姓名 <span class="required">*</span></label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>電郵 <span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>電話 <span class="required">*</span></label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>專業資格 <span class="required">*</span></label>
+                    <select name="qualification" required>
+                        <option value="">請選擇</option>
+                        <option value="psychologist">註冊心理學家</option>
+                        <option value="counselor">輔導心理學家</option>
+                        <option value="social_worker">註冊社工</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>執業證書編號 <span class="required">*</span></label>
+                <input type="text" name="license" placeholder="例：SW-12345" required>
+            </div>
+            
+            <div class="form-group">
+                <label>個人簡介 <span class="required">*</span></label>
+                <textarea name="bio" placeholder="請簡介你的專業背景、擅長領域、治療取向..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>上傳證書 <span class="required">*</span></label>
+                <div class="file-upload">
+                    <div class="icon">📎</div>
+                    <p>點擊或拖曳上傳證書掃描件</p>
+                    <p class="hint">支持 PDF、JPG、PNG 格式，單個文件不超過 10MB</p>
+                    <input type="file" style="display:none" multiple accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-application">提交申請</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 南風心理輔導室 Southwind Counselling. 保留所有權利。</p>
+        </div>
+    </footer>
+
+    <script>
+        function submitApplication(e) {
+            e.preventDefault();
+            alert('申請已提交！我們會在3-5個工作日內審核你的資料，並通過電郵通知結果。');
+        }
+    </script>
+</body>
+</html>
