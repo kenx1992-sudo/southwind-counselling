@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付成功 - 南風心理輔導</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #4A7C6F;
+            --success: #10B981;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --white: #FFFFFF;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #1E3A2F 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .success-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        h1 {
+            font-size: 1.75rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .order-details {
+            background: #F8F6F3;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .order-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .next-steps {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .next-steps h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .cta-btn {
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .secondary-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="success-icon">✓</div>
+        <h1>支付成功！</h1>
+        <p class="subtitle">感謝你選擇南風心理輔導</p>
+        
+        <div class="order-details">
+            <div class="order-row">
+                <span>訂單編號</span>
+                <span id="order-id">#SW-20250319</span>
+            </div>
+            <div class="order-row">
+                <span>服務項目</span>
+                <span id="service-name">心理諮詢服務</span>
+            </div>
+            <div class="order-row">
+                <span>支付金額</span>
+                <span id="amount">HK$150</span>
+            </div>
+            <div class="order-row">
+                <span>支付時間</span>
+                <span id="time">2026-03-19 20:00</span>
+            </div>
+        </div>
+        
+        <div class="next-steps">
+            <h3>📝 接下來的步驟：</h3>
+            <div class="step">
+                <span class="step-number">1</span>
+                <span>我們會在 24 小時內通過 Telegram @Szechunbot 聯絡你</span>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <span>確認你的時間偏好和輔導需求</span>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <span>為你配對最適合的專業輔導員</span>
+            </div>
+        </div>
+        
+        <a href="../index.html" class="cta-btn">返回首頁</a>
+        <a href="https://t.me/Szechunbot" class="secondary-link">有任何問題？聯絡 @Szechunbot</a>
+        
+        <div class="contact-info">
+            需要立即協助？WhatsApp: +852 9194 6650<br>
+            或發送郵件至 <a href="mailto:hello@southwind.hk">hello@southwind.hk</a>
+        </div>
+    </div>
+    
+    <script>
+        // 從 URL 參數獲取訂單信息
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+        
+        if (plan === 'monthly') {
+            document.getElementById('service-name').textContent = '月費計劃';
+            document.getElementById('amount').textContent = 'HK$99';
+        } else if (plan === '30min') {
+            document.getElementById('service-name').textContent = '30分鐘單次諮詢';
+            document.getElementById('amount').textContent = 'HK$150';
+        } else if (plan === '60min') {
+            document.getElementById('service-name').textContent = '60分鐘單次諮詢';
+            document.getElementById('amount').textContent = 'HK$280';
+        }
+        
+        // 更新時間
+        const now = new Date();
+        document.getElementById('time').textContent = now.toLocaleString('zh-HK');
+        
+        // 生成隨機訂單號
+        const randomId = 'SW-' + Date.now().toString().slice(-8);
+        document.getElementById('order-id').textContent = randomId;
+    </script>
+</body>
+</html>
