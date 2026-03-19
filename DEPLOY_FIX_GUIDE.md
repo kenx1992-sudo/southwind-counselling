@@ -19,7 +19,7 @@
 |--------|--------|--------|
 | Source | Deploy from a branch | Deploy from a branch |
 | Branch | main | main |
-| Folder | / (root) | **/website** |
+| Folder | / (root) | **/docs** |
 
 ### 步驟 3：保存並等待
 - 點擊 **Save**
@@ -49,7 +49,7 @@
 ### 步驟 3：設置根目錄（關鍵步驟）
 在 Import 或設定頁面：
 - **Framework Preset**: Other
-- **Root Directory**: 輸入 `website` 並點擊右側箭頭確認
+- **Root Directory**: 輸入 `docs` 並點擊右側箭頭確認
 - **Build Command**: 留空
 - **Output Directory**: 留空
 
