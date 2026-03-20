@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background: #f0f0f0;
+        }
+        .avatar {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #2D5A4A 0%, #1E3A2F 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(45, 90, 74, 0.3);
+        }
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(232,184,109,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .logo-text {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 120px;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .sub-text {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 36px;
+            color: #E8B86D;
+            margin-top: 10px;
+            letter-spacing: 4px;
+        }
+        .ring {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 3px solid rgba(232,184,109,0.3);
+            border-radius: 50%;
+        }
+        .ring-2 {
+            position: absolute;
+            width: 460px;
+            height: 460px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        .leaf {
+            position: absolute;
+            top: 15%;
+            font-size: 60px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="avatar">
+        <div class="ring-2"></div>
+        <div class="ring"></div>
+        <div class="logo-text">南風</div>
+        <div class="sub-text">SOUTHWIND</div>
+    </div>
+</body>
+</html>
