@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background: #f0f0f0;
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+        }
+        .xiaohongshu-cover {
+            width: 900px;
+            height: 1200px;
+            background: linear-gradient(180deg, #F8F6F3 0%, #E8F4F0 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .xiaohongshu-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #2D5A4A, #4A7C6F);
+        }
+        .badge {
+            background: linear-gradient(135deg, #2D5A4A, #4A7C6F);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 24px;
+            margin-bottom: 60px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .logo-section {
+            margin-bottom: 60px;
+        }
+        .logo-icon {
+            font-size: 140px;
+            margin-bottom: 30px;
+        }
+        .title {
+            color: #1F2937;
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 6px;
+        }
+        .subtitle {
+            color: #2D5A4A;
+            font-size: 36px;
+            font-weight: 400;
+        }
+        .features {
+            display: flex;
+            gap: 40px;
+            margin: 60px 0;
+        }
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .feature-icon {
+            font-size: 48px;
+        }
+        .feature-text {
+            font-size: 24px;
+            color: #4B5563;
+            font-weight: 500;
+        }
+        .tagline {
+            color: #6B7280;
+            font-size: 32px;
+            line-height: 1.8;
+            margin-top: 40px;
+            padding: 30px 50px;
+            background: rgba(45, 90, 74, 0.05);
+            border-radius: 20px;
+            border-left: 6px solid #2D5A4A;
+        }
+        .handle {
+            position: absolute;
+            bottom: 50px;
+            color: #9CA3AF;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="xiaohongshu-cover">
+        <div class="badge">官宣 · 正式入駐</div>
+        
+        <div class="logo-section">
+            <div class="logo-icon">🌿</div>
+            <h1 class="title">南風心理輔導</h1>
+            <p class="subtitle">香港專業心理輔導團隊</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-text">24/7 AI輔導</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👨‍⚕️</div>
+                <div class="feature-text">真人諮詢</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📝</div>
+                <div class="feature-text">心理測評</div>
+            </div>
+        </div>
+        
+        <p class="tagline">
+            「南風之薰兮，可以解吾民之慍兮」<br>
+            我們希望像溫暖的南風一樣，吹散你心中的煩憂
+        </p>
+        
+        <div class="handle">小紅書號：@southwindcounselling</div>
+    </div>
+</body>
+</html>

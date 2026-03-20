@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background: #f0f0f0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .instagram-post {
+            width: 1080px;
+            height: 1080px;
+            background: linear-gradient(135deg, #2D5A4A 0%, #1E3A2F 50%, #0F1F1A 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .instagram-post::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232,184,109,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .logo-icon {
+            font-size: 120px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .title {
+            color: white;
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .subtitle {
+            color: #E8B86D;
+            font-size: 32px;
+            margin-bottom: 60px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        .divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #E8B86D, transparent);
+            margin-bottom: 60px;
+        }
+        .tagline {
+            color: rgba(255,255,255,0.9);
+            font-size: 28px;
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        .cta {
+            margin-top: 60px;
+            padding: 20px 50px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .handle {
+            position: absolute;
+            bottom: 40px;
+            color: rgba(255,255,255,0.5);
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="instagram-post">
+        <div class="logo-icon">🌿</div>
+        <h1 class="title">南風心理輔導</h1>
+        <p class="subtitle">Southwind Counselling</p>
+        
+        <div class="divider"></div>
+        
+        <p class="tagline">
+            「南風之薰兮，可以解吾民之慍兮」<br>
+            <br>
+            我們希望像溫暖的南風一樣，<br>
+            吹散你心中的煩憂
+        </p>
+        
+        <div class="cta">24/7 AI輔導 · 真人視訊諮詢 · 專業心理測評</div>
+        
+        <div class="handle">@southwind.counselling</div>
+    </div>
+</body>
+</html>
