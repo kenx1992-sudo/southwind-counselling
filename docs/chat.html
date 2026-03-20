@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南風AI輔導 - 開始對話</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #2D5A4A 0%, #1E3A2F 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .chat-container {
+            background: white;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 420px;
+            height: 85vh;
+            max-height: 800px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+        .chat-header {
+            background: linear-gradient(135deg, #2D5A4A, #4A7C6F);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .bot-avatar {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        .bot-info h2 {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .bot-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #4ADE80;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ADE80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+            background: #F8F9FA;
+        }
+        .message {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .message.bot {
+            flex-direction: row;
+        }
+        .message.user {
+            flex-direction: row-reverse;
+        }
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .message.bot .message-avatar {
+            background: linear-gradient(135deg, #2D5A4A, #4A7C6F);
+        }
+        .message.user .message-avatar {
+            background: #E5E7EB;
+        }
+        .message-content {
+            max-width: 75%;
+            padding: 16px 20px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .message.bot .message-content {
+            background: white;
+            color: #1F2937;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .message.user .message-content {
+            background: linear-gradient(135deg, #2D5A4A, #4A7C6F);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        .message-time {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-top: 6px;
+        }
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #E5E7EB;
+        }
+        .quick-reply {
+            background: #F3F4F6;
+            border: 1px solid #E5E7EB;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quick-reply:hover {
+            background: #2D5A4A;
+            color: white;
+            border-color: #2D5A4A;
+        }
+        .chat-input {
+            padding: 20px 24px;
+            background: white;
+            border-top: 1px solid #E5E7EB;
+        }
+        .input-container {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 16px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 28px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .chat-input input:focus {
+            border-color: #2D5A4A;
+        }
+        .send-btn {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #2D5A4A, #4A7C6F);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .send-btn:hover {
+            transform: scale(1.05);
+        }
+        .telegram-link {
+            text-align: center;
+            padding: 12px;
+            background: #F8F9FA;
+            border-top: 1px solid #E5E7EB;
+        }
+        .telegram-link a {
+            color: #2D5A4A;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .telegram-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="bot-avatar">🌿</div>
+            <div class="bot-info">
+                <h2>南風AI輔導助手</h2>
+                <p>由 Kimi AI 驅動</p>
+                <div class="chat-status">
+                    <div class="status-dot"></div>
+                    <span>在線</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Messages -->
+        <div class="chat-messages" id="messages">
+            <!-- Welcome Message -->
+            <div class="message bot">
+                <div class="message-avatar">🤖</div>
+                <div class="message-wrapper">
+                    <div class="message-content">
+                        你好！我是南風AI輔導助手 🌿<br>
+                        <br>
+                        我在這裡傾聽你的心聲，提供初步的心理支持和建議。無論你感到焦慮、壓力，還是只是想找人聊聊，我都在這裡。<br>
+                        <br>
+                        💚 請注意：我是AI助手，不能替代專業心理治療。如有嚴重困擾，建議預約我們的真人輔導師。
+                    </div>
+                    <div class="message-time">剛才</div>
+                    
+                    <div class="quick-replies">
+                        <button class="quick-reply" onclick="sendQuickReply('我最近感到焦慮')">😰 我最近感到焦慮</button>
+                        <button class="quick-reply" onclick="sendQuickReply('我想了解輔導服務')">💚 我想了解輔導服務</button>
+                        <button class="quick-reply" onclick="sendQuickReply('如何預約真人輔導')">👨‍⚕️ 如何預約真人輔導</button>
+                        <button class="quick-reply" onclick="sendQuickReply('我想做心理測評')">📝 我想做心理測評</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Input -->
+        <div class="chat-input">
+            <div class="input-container">
+                <input type="text" id="messageInput" placeholder="輸入消息..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+        
+        <!-- Telegram Link -->
+        <div class="telegram-link">
+            <a href="https://t.me/southwindcounsellingbot" target="_blank">
+                📱 在 Telegram 中繼續對話
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        const messagesContainer = document.getElementById('messages');
+        const messageInput = document.getElementById('messageInput');
+        
+        function sendQuickReply(text) {
+            messageInput.value = text;
+            sendMessage();
+        }
+        
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (!text) return;
+            
+            // Add user message
+            addMessage(text, 'user');
+            messageInput.value = '';
+            
+            // Simulate bot response (in production, this would call your backend)
+            setTimeout(() => {
+                const response = generateBotResponse(text);
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+        
+        function addMessage(text, type) {
+            const time = new Date().toLocaleTimeString('zh-HK', { hour: '2-digit', minute: '2-digit' });
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${type === 'bot' ? '🤖' : '👤'}</div>
+                <div class="message-wrapper">
+                    <div class="message-content">${escapeHtml(text)}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function generateBotResponse(userMessage) {
+            // Simple response logic - in production, this would connect to your AI backend
+            const responses = [
+                "我理解你的感受。能告訴我更多關於這種情況嗎？",
+                "感謝你分享這些。這種感覺持續多久了？",
+                "我明白這很困難。你想聊聊什麼時候開始有這種感覺的嗎？",
+                "聽起來你正在經歷一些挑戰。除了這個，還有其他讓你困擾的事嗎？",
+                "謝謝你信任我。如果你需要更深入的幫助，我可以幫你預約我們的真人輔導師。"
+            ];
+            
+            // Check for specific keywords
+            const lowerMsg = userMessage.toLowerCase();
+            if (lowerMsg.includes('預約') || lowerMsg.includes('真人')) {
+                return "我們的真人輔導服務收費如下：\n\n💚 基礎版：HK$168/月\n💚 進階版：HK$388/月\n💚 專業版：HK$788/月\n\n你可以通過以下方式預約：\n1. 填寫網站聯絡表單\n2. WhatsApp: 9194 6650\n3. 直接在 Telegram @southwindcounsellingbot 預約";
+            }
+            
+            if (lowerMsg.includes('焦慮') || lowerMsg.includes('焦慮')) {
+                return "焦慮是很常見的，你並不孤單。🌿\n\n以下是一些可能有幫助的方法：\n\n1. 🫁 深呼吸練習 - 試試 4-7-8 呼吸法\n2. 🏃 適度運動 - 每天30分鐘散步\n3. 📝 寫日記 - 記錄你的感受\n4. 💤 充足睡眠 - 建立規律作息\n\n如果焦慮持續影響日常生活，建議預約我們的專業輔導師進行評估。";
+            }
+            
+            if (lowerMsg.includes('測評') || lowerMsg.includes('測試')) {
+                return "我們提供多種專業心理測評：\n\n📝 PHQ-9 抑鬱症篩查\n📝 GAD-7 焦慮症篩查\n📝 壓力指數評估\n📝 睡眠品質評估\n\n你可以在我們的網站上免費進行初步測評：\nhttps://southwind-counselling.vercel.app/assessments/\n\n完成後，我可以幫你解讀結果並建議下一步。";
+            }
+            
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+    </script>
+</body>
+</html>

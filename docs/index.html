@@ -273,25 +273,46 @@
             transform: scale(1.05);
         }
         
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
         .start-chat-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.75rem;
-            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
-            color: white;
             padding: 1rem 2rem;
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
-            margin-top: 1rem;
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(139,92,246,0.3);
         }
         
-        .start-chat-btn:hover {
+        .start-chat-btn.primary {
+            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+            color: white;
+        }
+        
+        .start-chat-btn.primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(139,92,246,0.4);
+        }
+        
+        .start-chat-btn.secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .start-chat-btn.secondary:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
         }
         
         /* AI Features */
@@ -580,9 +601,17 @@
                     無需預約，即刻傾訴。專業 AI 技術結合心理學理論，
                     隨時隨地為你提供情緒支持和心理建議。
                 </p>
-                <a href="https://t.me/southwindcounsellingbot" class="start-chat-btn">
-                    💬 開始 AI 對話
-                </a>
+                <div class="cta-buttons">
+                    <a href="chat.html" class="start-chat-btn primary">
+                        💬 網頁直接對話
+                    </a>
+                    <a href="https://t.me/southwindcounsellingbot" class="start-chat-btn secondary" target="_blank">
+                        📱 Telegram 對話
+                    </a>
+                </div>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-top: 1rem;">
+                    無需下載，直接在瀏覽器中開始對話
+                </p>
             </div>
             
             <div class="ai-chat-preview">
