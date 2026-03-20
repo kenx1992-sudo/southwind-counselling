@@ -1,11 +1,12 @@
 {
   "last_update_id": 0,
-  "bot_token": "待更新_使用新Bot的Token",
+  "bot_token": "8686528702:AAHMsgw0_-wOev2qjq4H13T-MBVYaQOWdec",
   "bot_username": "@southwindcounsellingbot",
   "old_bot_username": "@Szechunbot",
   "user_id": "5029196275",
   "user_name": "SZEXD",
-  "双向连接": "待配置",
+  "双向连接": "已配置",
   "轮询间隔": "60秒",
-  "更新日期": "2026-03-20"
+  "更新日期": "2026-03-20",
+  "status": "active"
 }
