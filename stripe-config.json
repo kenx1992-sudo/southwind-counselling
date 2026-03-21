@@ -1,12 +1,12 @@
 {
   "stripe_links": {
     "weekly": "待更新",
-    "monthly": "https://buy.stripe.com/14A9AL49G2Lb7Sqbdt2cg00",
+    "monthly": "https://buy.stripe.com/6oU8wH8iv16q8Ptg9N0x200",
     "yearly": "https://buy.stripe.com/7sY9ALdCP16q0iXaPt0x201"
   },
   "pricing": {
     "weekly": "待更新",
-    "monthly": 149,
+    "monthly": 299,
     "yearly": 2999
   },
   "subscription_plans": {
@@ -21,8 +21,8 @@
     },
     "monthly": {
       "name": "月費計劃",
-      "price": 149,
-      "stripe_link": "https://buy.stripe.com/14A9AL49G2Lb7Sqbdt2cg00",
+      "price": 299,
+      "stripe_link": "https://buy.stripe.com/6oU8wH8iv16q8Ptg9N0x200",
       "features": [
         "30天 AI 輔導對話任用",
         "每月 1 次真人視訊諮詢",
@@ -41,7 +41,7 @@
         "專屬輔導員配對",
         "年度心理健康報告"
       ],
-      "savings": "比月費節省 34%"
+      "savings": "比月費節省 16%"
     }
   },
   "contact": {
@@ -50,5 +50,5 @@
     "phone": "56828499"
   },
   "updated": "2026-03-21",
-  "note": "已刪除單次方案，改為純訂閱制"
+  "note": "月費已更新為HK$299"
 }
