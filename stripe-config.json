@@ -1,18 +1,20 @@
 {
   "stripe_links": {
+    "yearly": "https://buy.stripe.com/7sY9ALdCP16q0iXaPt0x201",
     "monthly": "https://buy.stripe.com/14A9AL49G2Lb7Sqbdt2cg00",
     "single_30min": "https://buy.stripe.com/7sY8wHdKgadDa0y4P52cg01",
     "single_60min": "https://buy.stripe.com/6oU28j9u0gC1goW6Xd2cg02"
   },
   "pricing": {
+    "yearly": 2999,
+    "monthly": 149,
     "single_30min": 128,
-    "single_60min": 268,
-    "monthly": 149
+    "single_60min": 268
   },
   "contact": {
     "telegram": "@southwind_counseling",
     "email": "southwindcounselling@gmail.com",
     "phone": "56828499"
   },
-  "updated": "2026-03-20"
+  "updated": "2026-03-21"
 }
