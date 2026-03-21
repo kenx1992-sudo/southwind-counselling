@@ -1,20 +1,54 @@
 {
   "stripe_links": {
-    "yearly": "https://buy.stripe.com/7sY9ALdCP16q0iXaPt0x201",
+    "weekly": "待更新",
     "monthly": "https://buy.stripe.com/14A9AL49G2Lb7Sqbdt2cg00",
-    "single_30min": "https://buy.stripe.com/7sY8wHdKgadDa0y4P52cg01",
-    "single_60min": "https://buy.stripe.com/6oU28j9u0gC1goW6Xd2cg02"
+    "yearly": "https://buy.stripe.com/7sY9ALdCP16q0iXaPt0x201"
   },
   "pricing": {
-    "yearly": 2999,
+    "weekly": "待更新",
     "monthly": 149,
-    "single_30min": 128,
-    "single_60min": 268
+    "yearly": 2999
+  },
+  "subscription_plans": {
+    "weekly": {
+      "name": "週費計劃",
+      "price": "待更新",
+      "features": [
+        "7天 AI 輔導對話任用",
+        "基礎心理測評",
+        "心理健康資源庫"
+      ]
+    },
+    "monthly": {
+      "name": "月費計劃",
+      "price": 149,
+      "stripe_link": "https://buy.stripe.com/14A9AL49G2Lb7Sqbdt2cg00",
+      "features": [
+        "30天 AI 輔導對話任用",
+        "每月 1 次真人視訊諮詢",
+        "專業心理測評",
+        "心理健康資源庫"
+      ]
+    },
+    "yearly": {
+      "name": "年費計劃",
+      "price": 2999,
+      "stripe_link": "https://buy.stripe.com/7sY9ALdCP16q0iXaPt0x201",
+      "features": [
+        "全年 AI 輔導對話任用",
+        "每月 2 次真人視訊諮詢",
+        "優先預約權",
+        "專屬輔導員配對",
+        "年度心理健康報告"
+      ],
+      "savings": "比月費節省 34%"
+    }
   },
   "contact": {
     "telegram": "@southwind_counseling",
     "email": "southwindcounselling@gmail.com",
     "phone": "56828499"
   },
-  "updated": "2026-03-21"
+  "updated": "2026-03-21",
+  "note": "已刪除單次方案，改為純訂閱制"
 }
