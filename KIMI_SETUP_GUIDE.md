@@ -1,3 +1,33 @@
+# Kimi API 免費試用設置指南
+
+## 註冊與獲取 API Key
+
+### 步驟 1：註冊 Kimi 開放平台
+1. 訪問：https://platform.moonshot.cn
+2. 點擊「註冊」
+3. 用手機號或郵箱註冊
+4. 完成實名認證（需要身份證）
+
+### 步驟 2：創建 API Key
+1. 登錄後進入「控制台」
+2. 點擊「API Key 管理」
+3. 點擊「創建 API Key」
+4. 複製並保存 Key（只顯示一次！）
+
+### 步驟 3：查看免費額度
+- 新用戶通常有 **¥15-30 免費額度**
+- 約可支持 **1,000-2,000 次對話**
+- 在「賬戶中心」查看餘額
+
+---
+
+## 修改 Railway Bot 代碼
+
+### 1. 更新 bot.py
+
+在 `railway_bot/bot.py` 中添加 Kimi API 調用：
+
+```python
 import os
 import asyncio
 import logging
@@ -25,7 +55,7 @@ def ask_kimi(user_message, user_id):
         }
         
         data = {
-            "model": "moonshot-v1-8k",
+            "model": "moonshot-v1-8k",  # 可選：8k/32k/128k
             "messages": [
                 {
                     "role": "system",
@@ -59,133 +89,73 @@ def ask_kimi(user_message, user_id):
         logging.error(f"Kimi API 錯誤: {e}")
         return None
 
-# ========== 命令处理 ==========
+# ========== 命令處理 ==========
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
-    """处理 /start 命令"""
-    welcome_text = """
-🌿 <b>欢迎来到南風AI心理輔導！</b>
+    welcome = """
+🌿 <b>歡迎來到南風AI心理輔導！</b>
 
-我是你的 AI 輔導助手，24/7 在線陪伴你。
+我是你的 AI 輔導助手，由 Kimi AI 驅動，24/7 在線陪伴你。
 
 💚 <b>我可以幫你：</b>
-• 情緒傾聽與支持
-• 壓力管理建議  
+• 情緒傾聽與心理支持
+• 壓力管理建議
 • 心理健康資訊
-• 預約真人輔導
+• 引導預約真人輔導
 
 📋 <b>常用命令：</b>
 /pricing - 查看價格方案
 /pay - 立即付款
-/help - 使用幫助
 /contact - 聯絡真人輔導
 
-💬 <b>直接發送消息開始對話！</b>
+💬 <b>直接發送消息，我會用 AI 為你提供輔導！</b>
 """
-    await message.answer(welcome_text)
+    await message.answer(welcome)
 
 @dp.message(Command("pricing"))
 async def cmd_pricing(message: types.Message):
-    """处理 /pricing 命令"""
-    pricing_text = """
+    pricing = """
 📋 <b>南風心理輔導 - 訂閱方案</b>
 
 🌿 <b>月費計劃 - HK$299/月</b>
 ✓ 30天 AI 輔導對話任用
 ✓ 每月 1 次真人視訊諮詢
 ✓ 專業心理測評
-✓ 心理健康資源庫
 
 🏆 <b>年費計劃 - HK$2,999/年</b>
-✓ 全年 AI 輔導對話任用
-✓ 每月 2 次真人視訊諮詢
-✓ 優先預約權
-✓ 專屬輔導員配對
-✓ 年度心理健康報告
-💰 <b>比月費節省 16%！</b>
+✓ 全年 AI 輔導任用
+✓ 每月 2 次真人諮詢
+✓ 比月費節省 16%
 
-💳 <b>付款方式：</b>
-🇭🇰 香港用戶：FPS 轉數快
-🌍 國際用戶：Stripe 信用卡
-
-輸入 /pay 立即付款
+💳 輸入 /pay 立即付款
 """
-    await message.answer(pricing_text)
+    await message.answer(pricing)
 
 @dp.message(Command("pay"))
 async def cmd_pay(message: types.Message):
-    """处理 /pay 命令"""
-    pay_text = """
-💳 <b>選擇付款方式</b>
+    pay = """
+💳 <b>付款方式</b>
 
-📋 <b>Stripe 信用卡支付</b>（國際用戶）
-
-🌿 <b>月費計劃 - HK$299/月</b>
+<b>Stripe 信用卡：</b>
+🌿 月費 HK$299/月
 👉 https://buy.stripe.com/6oU8wH8iv16q8Ptg9N0x200
 
-🏆 <b>年費計劃 - HK$2,999/年</b>
+🏆 年費 HK$2,999/年  
 👉 https://buy.stripe.com/7sY9ALdCP16q0iXaPt0x201
 
-💰 比月費節省 16%！
+<b>FPS 轉數快：</b>
+📌 FPS ID：91946650
+📌 商戶：SOUTHWIND COUNSELLING
 
-🇭🇰 <b>香港用戶 - FPS 轉數快</b>
-請發送 /fps 獲取付款二維碼
-
-付款完成後請截圖發送給我，
-我會立即為你開通服務 ✅
+付款後截圖發給我，立即開通！✅
 """
-    await message.answer(pay_text)
-
-@dp.message(Command("fps"))
-async def cmd_fps(message: types.Message):
-    """处理 /fps 命令"""
-    fps_text = """
-📱 <b>FPS 轉數快付款</b>
-
-📌 <b>FPS ID：</b>91946650
-📌 <b>商戶名稱：</b>SOUTHWIND COUNSELLING
-
-📋 <b>付款步驟：</b>
-1. 打開銀行 App
-2. 選擇「轉數快 FPS」
-3. 輸入 FPS ID：91946650
-4. 確認金額並付款
-5. <b>截圖付款記錄</b>發給我
-
-💚 <b>確認後立即開通服務！</b>
-"""
-    await message.answer(fps_text)
-
-@dp.message(Command("help"))
-async def cmd_help(message: types.Message):
-    """处理 /help 命令"""
-    help_text = """
-❓ <b>使用幫助</b>
-
-📋 <b>常用命令：</b>
-/start - 開始對話
-/pricing - 查看價格方案
-/pay - 立即付款
-/fps - FPS 付款指引
-/contact - 聯絡真人輔導
-
-💬 <b>如何開始：</b>
-1. 輸入 /pricing 了解服務
-2. 輸入 /pay 選擇付款方式
-3. 或直接發送消息與我對話
-
-🌿 <b>隨時隨地，我都在這裡陪伴你。</b>
-"""
-    await message.answer(help_text)
+    await message.answer(pay)
 
 @dp.message(Command("contact"))
 async def cmd_contact(message: types.Message):
-    """处理 /contact 命令"""
-    contact_text = """
+    contact = """
 📞 <b>聯絡我們</b>
-
-💚 <b>南風心理輔導室</b>
 
 📱 <b>WhatsApp：</b>9194 6650
 📧 <b>Email：</b>southwindcounselling@gmail.com
@@ -194,10 +164,10 @@ async def cmd_contact(message: types.Message):
 ⏰ <b>服務時間：</b>
 AI 輔導：24/7 全天候
 真人輔導：預約制
-
-💬 有任何問題歡迎隨時聯絡！
 """
-    await message.answer(contact_text)
+    await message.answer(contact)
+
+# ========== AI 對話處理 ==========
 
 @dp.message()
 async def handle_ai_chat(message: types.Message):
@@ -231,3 +201,71 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+```
+
+### 2. 更新 requirements.txt
+```
+aiogram==3.2.0
+requests==2.31.0
+```
+
+---
+
+## 設置 Railway 環境變量
+
+### 添加 KIMI_API_KEY
+1. Railway App → 你的項目
+2. 點擊 **Variables** 標籤
+3. 點擊 **New Variable**
+4. 輸入：
+   ```
+   Key: KIMI_API_KEY
+   Value: sk-xxxxxxxxxxxxx（你的 Kimi API Key）
+   ```
+5. 點擊 **Add**
+
+---
+
+## 部署
+
+1. 推送代碼到 GitHub
+```bash
+git add -A
+git commit -m "添加 Kimi AI 功能"
+git push
+```
+
+2. Railway 會自動重新部署
+
+3. 等待 2-3 分鐘，看到 🟢 Healthy
+
+---
+
+## 測試
+
+1. Telegram 找 @southwindcounsellingbot
+2. 發送 `/start`
+3. 發送「我最近好焦慮」
+4. 應該收到 AI 生成的輔導回覆
+
+---
+
+## 充值（當免費額度用完）
+
+1. 登錄 https://platform.moonshot.cn
+2. 進入「賬戶中心」
+3. 點擊「充值」
+4. 支持支付寶/微信支付
+5. 最低充值 ¥50
+
+---
+
+## 費用參考
+
+| 用量 | 費用 |
+|------|------|
+| 免費額度 | ¥15-30 |
+| 1,000 次對話 | 約 ¥50-80 |
+| 5,000 次對話 | 約 ¥250-400 |
+
+**開始設置吧！有任何問題隨時問我！**
